@@ -29,6 +29,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/pets").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/pets/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/pets").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/pets/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/pets/**").hasRole("ADMIN")

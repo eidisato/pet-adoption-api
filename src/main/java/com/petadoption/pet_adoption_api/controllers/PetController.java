@@ -36,6 +36,7 @@ public class PetController {
         Pet pet = new Pet();
         pet.setName(petRecordDto.name());
         pet.setTipo(petRecordDto.tipo());
+        pet.setRaca(petRecordDto.raca());
         pet.setIdade(petRecordDto.idade());
         pet.setPorte(petRecordDto.porte());
         pet.setDescricao(petRecordDto.descricao());
@@ -49,6 +50,7 @@ public class PetController {
                 .map(pet -> {
                     pet.setName(dto.name());
                     pet.setTipo(dto.tipo());
+                    pet.setRaca(dto.raca());
                     pet.setIdade(dto.idade());
                     pet.setPorte(dto.porte());
                     pet.setDescricao(dto.descricao());

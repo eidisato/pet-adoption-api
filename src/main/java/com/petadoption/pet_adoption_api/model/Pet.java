@@ -29,6 +29,10 @@ public class Pet implements Serializable {
 
     @Setter
     @Getter
+    private String raca;
+
+    @Setter
+    @Getter
     private int idade;
 
     @Setter

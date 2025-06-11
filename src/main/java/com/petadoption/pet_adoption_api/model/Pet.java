@@ -46,4 +46,8 @@ public class Pet implements Serializable {
     @Setter
     @Getter
     private String imagemUrl;
+
+    @Setter
+    @Getter
+    private boolean isAvailable = true;
 }

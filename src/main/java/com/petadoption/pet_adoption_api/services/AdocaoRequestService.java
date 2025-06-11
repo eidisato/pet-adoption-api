@@ -35,8 +35,12 @@ public class AdocaoRequestService {
         AdocaoRequest request = new AdocaoRequest();
         request.setNomeAdotante(nomeAdotante);
         request.setEmail(email);
-        request.setPet(petOpt.get());
-        return Optional.of(adocaoRequestRepository.save(request));
+        Pet pet = petOpt.get();
+        request.setPet(pet);
+        AdocaoRequest saved = adocaoRequestRepository.save(request);
+        pet.setAvailable(false);
+        petRepository.save(pet);
+        return Optional.of(saved);
     }
 
     public void deletar(UUID idAdocaoRequest) {

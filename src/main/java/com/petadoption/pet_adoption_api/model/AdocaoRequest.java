@@ -3,8 +3,8 @@ package com.petadoption.pet_adoption_api.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
@@ -12,7 +12,8 @@ import java.util.UUID;
 public class AdocaoRequest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id_adocao", columnDefinition = "uuid", updatable = false, nullable = false)
     @Setter @Getter
     private UUID idAdocao;

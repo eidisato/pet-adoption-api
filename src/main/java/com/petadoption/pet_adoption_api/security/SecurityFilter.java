@@ -26,7 +26,24 @@ public class SecurityFilter extends OncePerRequestFilter {
 
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+        String path = request.getRequestURI();
+        String method = request.getMethod();
+
+        // Ignorar filtros em rotas públicas
+        boolean isPublicPath =
+                (method.equals("GET") && (path.startsWith("/api/pets"))) ||
+                        (method.equals("POST") && path.equals("/auth/login")) ||
+                        (method.equals("POST") && path.equals("/api/requests"));
+
+        if (isPublicPath) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        // Processo normal para rotas protegidas
         var token = this.recoverToken(request);
         if (token != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             var login = tokenService.validateToken(token);
@@ -41,6 +58,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
 
     private String recoverToken(HttpServletRequest request) {
         var authHeader = request.getHeader("Authorization");

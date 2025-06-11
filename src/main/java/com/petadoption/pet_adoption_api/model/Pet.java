@@ -52,5 +52,5 @@ public class Pet implements Serializable {
     @Setter
     @Getter
     @Column(name = "is_available")
-    private boolean isAvailable = true;
+    private Boolean isAvailable = true;
 }

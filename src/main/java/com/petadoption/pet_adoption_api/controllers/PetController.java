@@ -41,7 +41,7 @@ public class PetController {
         pet.setPorte(petRecordDto.porte());
         pet.setDescricao(petRecordDto.descricao());
         pet.setImagemUrl(petRecordDto.imagemUrl());
-        pet.setAvailable(true);
+        pet.setIsAvailable(true);
         return ResponseEntity.status(HttpStatus.CREATED).body(petService.salvar(pet));
     }
 

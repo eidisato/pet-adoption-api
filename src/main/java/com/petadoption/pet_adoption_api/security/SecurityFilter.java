@@ -36,6 +36,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                 (method.equals("GET") && path.startsWith("/api/pets")) ||
                         (method.equals("POST") && path.equals("/auth/login")) ||
                         (method.equals("POST") && path.equals("/api/requests"));
+        System.out.println("🔍 Filtro ativado para: " + request.getMethod() + " " + request.getRequestURI());
 
         if (isPublicPath) {
             System.out.println("🔓 Rota pública liberada: " + method + " " + path);

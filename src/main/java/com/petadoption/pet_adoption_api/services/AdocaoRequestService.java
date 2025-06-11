@@ -38,7 +38,7 @@ public class AdocaoRequestService {
         Pet pet = petOpt.get();
         request.setPet(pet);
         AdocaoRequest saved = adocaoRequestRepository.save(request);
-        pet.setAvailable(false);
+        pet.setIsAvailable(false);
         petRepository.save(pet);
         return Optional.of(saved);
     }

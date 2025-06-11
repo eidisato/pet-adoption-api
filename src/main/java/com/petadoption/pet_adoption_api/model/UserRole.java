@@ -1,8 +1,7 @@
 package com.petadoption.pet_adoption_api.model;
 
 public enum UserRole {
-    ADMIN("admin"),
-    USER("user");
+    ADMIN("admin");
 
     private String role;
 

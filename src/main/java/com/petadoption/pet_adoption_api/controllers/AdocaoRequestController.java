@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/requests")
-@CrossOrigin(origins = "http://localhost:3000") // acesso react
+@CrossOrigin(origins = "http://localhost:3000") // Permitir acesso do React
 public class AdocaoRequestController {
 
     @Autowired

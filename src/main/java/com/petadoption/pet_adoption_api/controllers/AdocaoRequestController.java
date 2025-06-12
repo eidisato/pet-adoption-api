@@ -65,4 +65,16 @@ public class AdocaoRequestController {
         adocaoRequestService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/{id}/completo")
+    public ResponseEntity<?> deletarRequestComPet(@PathVariable UUID id) {
+        return adocaoRequestService.buscarPorId(id)
+                .map(request -> {
+                    UUID idPet = request.getPet().getIdPet();
+                    adocaoRequestService.deletar(id);        // remove a adoção
+                    petRepository.deleteById(idPet);         // remove o pet vinculado
+                    return ResponseEntity.noContent().build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

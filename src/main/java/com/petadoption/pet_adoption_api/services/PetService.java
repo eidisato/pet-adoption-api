@@ -33,7 +33,7 @@ public class PetService {
     }
 
     public void deletar(UUID idPet) {
-        adocaoRequestRepository.deleteByPet_IdPet(idPet);
+        adocaoRequestRepository.deleteAllByPet_IdPet(idPet);
         petRepository.deleteById(idPet);
     }
 }

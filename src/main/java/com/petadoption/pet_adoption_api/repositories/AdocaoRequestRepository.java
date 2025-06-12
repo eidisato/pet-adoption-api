@@ -8,5 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface AdocaoRequestRepository extends JpaRepository<AdocaoRequest, UUID> {
-    void deleteByPet_IdPet(UUID idPet);
+    void deleteAllByPet_IdPet(UUID idPet);
 }
